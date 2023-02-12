@@ -60,12 +60,12 @@ defmodule RefranerBot.MessageFormatter do
   end
 
   defp show_buttons(refran_id, :show) do
-    buttons = [[[text: "Show info", callback_data: "show:#{refran_id}"]]]
+    buttons = [[[text: "Mostrar detalles", callback_data: "show:#{refran_id}"]]]
     [reply_markup: ExGram.Dsl.create_inline(buttons)]
   end
 
   defp show_buttons(refran_id, :hide) do
-    buttons = [[[text: "Hide info", callback_data: "hide:#{refran_id}"]]]
+    buttons = [[[text: "Ocultar detalles", callback_data: "hide:#{refran_id}"]]]
     [reply_markup: ExGram.Dsl.create_inline(buttons)]
   end
 
