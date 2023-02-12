@@ -4,8 +4,14 @@ defmodule RefranerBot do
   @default_opts %{show: :summary}
   def get_refran(opts \\ %{}) do
     opts = normalize_opts(opts, @default_opts)
+    opts |> Store.get_refranes() |> MessageFormatter.format_refran(opts)
+  end
 
-    opts |> Store.get_refran() |> MessageFormatter.format_refran(opts)
+  def get_inline_refranes(opts \\ %{}) do
+    opts
+    |> normalize_opts(@default_opts)
+    |> Store.get_refranes()
+    |> MessageFormatter.format_inline()
   end
 
   defp normalize_opts(opts, defaults) do

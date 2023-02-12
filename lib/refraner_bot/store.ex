@@ -5,7 +5,7 @@ defmodule RefranerBot.Store do
   alias RefranerBot.Repo
 
   @default_params %{language: "ES", order_by: :random, limit: 1}
-  def get_refran(params \\ %{}) do
+  def get_refranes(params \\ %{}) do
     params = normalize_params(params, @default_params)
     language = params |> Map.fetch!(:language) |> String.upcase()
     id = maybe_string_to_integer(params[:id])
@@ -15,7 +15,8 @@ defmodule RefranerBot.Store do
     |> add_order_by(params[:order_by])
     |> maybe_filter_by(:idioma_codigo, language)
     |> maybe_filter_by(:id, id)
-    |> Repo.one()
+    |> maybe_search_text(params[:search])
+    |> Repo.all()
   end
 
   defp normalize_params(params, defaults) do
@@ -31,4 +32,11 @@ defmodule RefranerBot.Store do
 
   defp add_order_by(query, :random), do: order_by(query, fragment("RANDOM()"))
   defp add_order_by(query, _), do: query
+
+  defp maybe_search_text(query, nil), do: query
+
+  defp maybe_search_text(query, search_text) do
+    search_text = "%#{search_text}%"
+    where(query, [r], like(r.refran, ^search_text))
+  end
 end

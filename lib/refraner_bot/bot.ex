@@ -35,4 +35,14 @@ defmodule RefranerBot.Bot do
     {message, opts} = RefranerBot.get_refran(id: id, show: :summary)
     edit(context, :inline, message, opts)
   end
+
+  def handle({:inline_query, %{query: ""}}, context) do
+    articles = RefranerBot.get_inline_refranes(limit: 10)
+    answer_inline_query(context, articles)
+  end
+
+  def handle({:inline_query, %{query: search}}, context) do
+    articles = RefranerBot.get_inline_refranes(limit: 10, search: search)
+    answer_inline_query(context, articles)
+  end
 end
