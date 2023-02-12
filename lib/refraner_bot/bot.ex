@@ -45,7 +45,7 @@ defmodule RefranerBot.Bot do
 
   def handle({:inline_query, %{query: ""}}, context) do
     articles = RefranerBot.get_inline_refranes(limit: 10)
-    answer_inline_query(context, articles)
+    answer_inline_query(context, articles, cache_time: 0)
   end
 
   def handle({:inline_query, %{query: search}}, context) do
