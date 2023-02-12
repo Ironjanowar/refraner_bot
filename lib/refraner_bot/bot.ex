@@ -8,17 +8,24 @@ defmodule RefranerBot.Bot do
   command("start")
   command("help", description: "Muestra la ayuda")
   command("refran", description: "Manda un refran")
+  command("about", description: "Información sobre el creador")
 
   middleware(ExGram.Middleware.IgnoreUsername)
 
   def bot(), do: @bot
 
   def handle({:command, :start, _msg}, context) do
-    answer(context, "Hi!")
+    answer(context, "Hola! Envía /help si quieres saber como funciona el bot")
   end
 
   def handle({:command, :help, _msg}, context) do
-    answer(context, "Here is your help:")
+    {message, opts} = RefranerBot.help()
+    answer(context, message, opts)
+  end
+
+  def handle({:command, :about, _msg}, context) do
+    {message, opts} = RefranerBot.about()
+    answer(context, message, opts)
   end
 
   def handle({:command, :refran, _msg}, context) do

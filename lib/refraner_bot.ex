@@ -18,4 +18,7 @@ defmodule RefranerBot do
     opts = Map.new(opts)
     Map.merge(defaults, opts)
   end
+
+  defdelegate help, to: MessageFormatter, as: :help_command
+  defdelegate about, to: MessageFormatter, as: :about_command
 end

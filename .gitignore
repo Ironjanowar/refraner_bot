@@ -87,3 +87,6 @@ flycheck_*.el
 
 
 # End of https://www.gitignore.io/api/emacs
+
+refraner.db-shm
+refraner.db-wal

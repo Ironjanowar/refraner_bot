@@ -92,4 +92,26 @@ defmodule RefranerBot.MessageFormatter do
       description: refran.tipo || ""
     }
   end
+
+  def about_command() do
+    text = """
+    __Este bot lo ha hecho [@Ironjanowar](https://github.com/Ironjanowar) con ❤️__
+
+    Si te gusta el bot y quieres dejar una estrella ⭐️ [aquí](https://github.com/Ironjanowar/refraner_bot) está el repositorio
+    """
+
+    {text, @default_opts}
+  end
+
+  def help_command do
+    text = """
+    Envía /refran y el bot contestará con un refrán aleatorio
+
+    También tiene comandos _inline_, puedes escriber `@refraner_bot` en cualquier chat y te sugerirá 10 refranes aleatorios. Si quieres buscar un refrán en concreto puedes escribir tu búsqueda en cualquier chat con `@refraner_bot <búsqueda>`
+
+    _NOTA: Ahora mismo la búsqueda es una búsqueda literal del texto, por lo que tendrá que coincidir mayúsculas, minúsculas, tildes, comas, etc._
+    """
+
+    {text, @default_opts}
+  end
 end
