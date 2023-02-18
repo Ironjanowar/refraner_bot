@@ -1,21 +1,17 @@
 # RefranerBot
 
-**TODO: Add description**
+[@refraner_bot](https://t.me/refraner_bot)
 
-## Installation
+Envía `/refran` al bot y el bot contestará con un refrán aleatorio
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `refraner_bot` to your list of dependencies in `mix.exs`:
+## Inline
 
-```elixir
-def deps do
-  [
-    {:refraner_bot, "~> 0.1.0"}
-  ]
-end
-```
+Puedes usar el bot en cualquier chat con el el modo _inline_. Por defecto mostrará 10 refranes aleatorios
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/refraner_bot>.
+![Refranes Aleatorios](./images/refranes_aleatorios.jpg)
 
+También puedes buscar un refrán
+
+![Buscar Refran](./images/buscar_refran.jpg)
+
+__Nota:__ _De momento la búsqueda es literal_
